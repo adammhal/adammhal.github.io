@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Congressional District Challenge</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/modern-normalize.css') }}" />
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/styles.css') }}" />
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/components/header.css') }}" />
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/components/mobile-nav.css') }}" />
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/states/state.css') }}" />
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/components/footer.css') }}" />
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/util.css') }}" />
+  </head>
+  <body>
+    <div id="app"></div>
+
+     {% include "header.html" %}
+    
+    <main>
+      <div class="state">
+        <ul>
+            <li> <div class="title">Senator {{ senator1['name'] }}</div>
+              <div class="state__mini"> 
+                <img class="state__image" src="{{ senator1['photoUrl'] }}" alt="Picture of Senator {{ senator1['name'] }}">
+              </div>
+              <p class="state__party"> {{ senator1['party'] }}</p>
+              <p class="state__description"> {{ senator1_desc }}</p> 
+          </li>
+          <li> <div class="title">Senator {{ senator2['name'] }}</div>
+            <div class="state__mini"> 
+              <img class="state__image" src="{{ senator2['photoUrl'] }}" alt="Picture of Senator {{ senator2['name'] }}">
+            </div>
+            <p class="state__party"> {{ senator2['party'] }}</p>
+            <p class="state__description"> {{ senator2_desc }}</p> 
+          </li>
+           <!-- ADD THE THING FOR GOVERNOR-->
+          <li> <div class="title">Governor {{ governor['name'] }}</div>
+            <div class="state__mini"> 
+              <img class="state__image" src="{{ governor['photoUrl'] }}" alt="Picture of Governor {{ governor['name'] }}">
+            </div>
+            <p class="state__party"> {{ governor['party'] }}</p>
+            <p class="state__description"> {{ governor_desc }}</p> 
+          </li>
+           <!-- ADD THE THING FOR OFFICER-->
+          <li> 
+            <div>
+              <div class="title">Attorney {{ attorneyGeneral['name'] }}</div>
+              <div class="state__mini"> 
+                <img class="state__image" src="{{ attorneyGeneral['photoUrl'] }}" alt="Picture of Attorney General {{ attorneyGeneral['name'] }}">
+              </div>
+            <p class="state__party"> {{ attorneyGeneral['party'] }}</p>
+           <p class="state__description"> {{ attorneyGeneral_desc }}</p> 
+          </li>
+        </div>
+        </ul>
+      </div>
+
+
+    <!--   <div class="reps">
+        <ul>
+          <li> <div class="title">Representative {{ senator1['name'] }}</div>
+            <div class="state__mini"> 
+              <img class="state__image" src="{{ senator1['photoUrl'] }}" alt="Picture of Senator {{ senator1['name'] }}">
+              <p class="state__news"> Insert Recent News Here </p> 
+            </div>
+            <p class="state__party"> {{ senator1['party'] }}</p>
+            <p class="state__description"> {{ senator1_desc }}</p> 
+        </li>
+        <li> <div class="title">Senator {{ senator2['name'] }}</div>
+          <div class="state__mini"> 
+            <img class="state__image" src="{{ senator2['photoUrl'] }}" alt="Picture of Senator {{ senator2['name'] }}">
+            <p class="state__news"> Insert Recent News Here </p> 
+          </div>
+          <p class="state__party"> {{ senator2['party'] }}</p>
+          <p class="state__description"> {{ senator2_desc }}</p> 
+        </li>
+        <li> <div class="title">Governor {{ governor['name'] }}</div>
+          <div class="state__mini"> 
+            <img class="state__image" src="{{ governor['photoUrl'] }}" alt="Picture of Governor {{ governor['name'] }}">
+            <p class="state__news"> Insert Recent News Here </p> 
+          </div>
+          <p class="state__party"> {{ governor['party'] }}</p>
+          <p class="state__description"> {{ governor_desc }}</p> 
+        </li>
+        <li> <div class="title">Officer {{ attorneyGeneral['name'] }}</div>
+          <div class="state__mini"> 
+            <img class="state__image" src="{{ attorneyGeneral['photoUrl'] }}" alt="Picture of Attorney General {{ attorneyGeneral['name'] }}">
+            <p class="state__news"> Insert Recent News Here </p> 
+          </div>
+          <p class="state__party"> {{ attorneyGeneral['party'] }}</p>
+         <p class="state__description"> {{ attorneyGeneral_desc }}</p> 
+        </li>
+      </ul>
+      </div> -->
+    </main>
+
+     <footer class="footer container section"> 
+      <h5 class="footer__title">NextGenPoliTech</h5>
+     </footer>
+
+    
+  </body>
+</html>
+    

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Congressional District Challenge</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/modern-normalize.css') }}" />
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/styles.css') }}" />
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/components/header.css') }}" />
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/components/mobile-nav.css') }}" />
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/states/state.css') }}" />
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/components/footer.css') }}" />
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/util.css') }}" />
+  </head>
+  <body>
+    <div id="app"></div>
+
+     {% include "header.html" %}
+
+    <main>
+      <div class="state">
+        <ul>
+            <li> 
+              <div class="title">Representative {{ representative['name'] }}</div>
+              <div class="state__mini"> 
+                <img class="state__image" src="{{ representative_image }}" alt="Picture of Representative {{ representative['name'] }}">
+                <p class="state__news"> {{ representative_links }} </p>
+              </div>
+              <p class="state__party"> {{ representative['party'] }}</p>
+              <p class="state__description"> {{ representative_desc }}</p>
+            </li>
+
+            <li> 
+              <div class="title">Mayor {{ mayor['name'] }}</div>
+              <div class="state__mini"> 
+                <img class="state__image" src="{{ mayor_image }}" alt="Picture of Mayor {{ mayor['name'] }}">
+                <p class="state__news"> {{ mayor_links }} </p>
+              </div>
+              <p class="state__party"> {{ mayor['party'] }} </p>
+              <p class="state__description">{{ mayor_description }}</p>
+            </li>
+            
+            
+        </ul>
+    </main>
+
+  </div>
+
+
+     <footer class="footer container section"> 
+      <h5 class="footer__title">NextGenPoliTech</h5>
+     </footer>
+
+     <script>
+      
+     </script>
+  </body>
+</html>
+    

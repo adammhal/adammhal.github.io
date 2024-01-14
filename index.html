@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="../static/assets/NextGenPoliTech-Logo.png"  type = "image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Congressional District Challenge</title>
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/styles.css') }}" />
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/modern-normalize.css') }}" />
+      <link rel="stylesheet" href= "{{ url_for('static',filename='css/components/header.css') }}" />
+      <link rel="stylesheet" href= "{{ url_for('static',filename='css/components/hero.css') }}" />
+      <link rel="stylesheet" href= "{{ url_for('static',filename='css/components/featured.css') }}" />
+      <link rel="stylesheet" href= "{{ url_for('static',filename='css/components/contact.css') }}" />
+      <link rel="stylesheet" href= "{{ url_for('static',filename='css/components/mobile-nav.css') }}" />
+      <link rel="stylesheet" href= "{{ url_for('static',filename='css/components/footer.css') }}" />
+      <link rel="stylesheet" href= "{{ url_for('static',filename='css/util.css') }}" />
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>  
+  </head>
+  <body>
+    <div id="app"></div>
+
+     {% include "header.html" %}
+
+     <!-- This is the USA flag background and the get started section-->
+    <main>
+      <section class="hero container">
+        <h1 class="hero__indicator">Find Out About Your Representative Now</h1>
+        <a class="hero__btn search-buttons" href="{{ url_for('representative') }}"> Get Started </a>
+      </section>
+      
+       <!-- This is the about us/ informative section-->
+       <div class="box"> 
+      <section class="featured container section">
+        <h2 class="featured__about"> Our Goals </h2>
+        <p class="featured__description"> NextGenPoliTech aims to digitally bridge the gap between the American people <br> 
+          and their political awareness, creating accessibility for curious people seeking local representatives and unbiased news. 
+         <br> Our tools aim to uplift the voices of the general public in order to address political concerns, and expand access to information.</p>
+
+      </section>
+      
+      <section class="why-vote container section">
+        <h3 class="vote__title featured__about"> Why Voting is Important by President Obama </h3>
+        <iframe class="voting__video" width="560" height="315" src="https://www.youtube.com/embed/7d30v1wfP7w?si=UD1mbkbic0iQIdm-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </section>
+
+      <section class="contact container section"> 
+        <h4 class="contact__title"> Get In Contact </h4>
+        <p class="contact__description"> If you have any questions or run into any problems with our website, 
+          then please contact our inbox and we will get back to you as soon as possible. </p>
+      <!-- Insert email here for contact-->
+          <a class="contact__btn search-buttons"  href="{{ url_for('contact') }}"> Reach Out </a>
+      </section>
+      </div>
+     </main>
+     
+     <footer class="footer container section"> 
+      <h5 class="footer__title">NextGenPoliTech</h5>
+     </footer>
+
+  </body>
+</html>
+    
