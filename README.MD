@@ -5,18 +5,6 @@ Welcome to my digital portfolio! This README file provides a sneak peek into my 
 ## About Me
 I am a passionate software engineer with expertise in web development and a strong background in Python, Java, C++, and AI. I love creating technical solutions to problems and combining innovation with technology.
 
-## Projects
-Here are a few highlights from my portfolio:
-
-- Project 1: [EduEval]
-    Description: Brief description of the project and its key features.
-
-- Project 2: [K
-    Description: Brief description of the project and its key features.
-
-- Project 3: [Project Name](link)
-    Description: Brief description of the project and its key features.
-
 ## Skills
 - JavaScript
 - HTML
