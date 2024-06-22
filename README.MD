@@ -8,7 +8,7 @@ I am a passionate software engineer with expertise in web development and a stro
 ## Projects
 Here are a few highlights from my portfolio:
 
-- Project 1: [EduEval](link)
+- Project 1: [EduEval]
     Description: Brief description of the project and its key features.
 
 - Project 2: [Project Name](link)
