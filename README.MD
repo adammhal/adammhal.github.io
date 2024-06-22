@@ -11,7 +11,7 @@ Here are a few highlights from my portfolio:
 - Project 1: [EduEval]
     Description: Brief description of the project and its key features.
 
-- Project 2: [Project Name](link)
+- Project 2: [Kinema
     Description: Brief description of the project and its key features.
 
 - Project 3: [Project Name](link)
