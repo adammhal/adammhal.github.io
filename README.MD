@@ -18,6 +18,6 @@ I am a passionate software engineer with expertise in web development and a stro
 - And more..
 
 ## Contact Me
-To learn more about my work or to discuss potential collaborations, feel free to reach out to me at [email@example.com](mailto:email@example.com).
+To learn more about my work or to discuss potential collaborations, feel free to reach out to me at [adammhal@gmail.com](mailto:email@example.com).
 
 Thank you for visiting my portfolio!
