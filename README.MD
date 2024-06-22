@@ -3,7 +3,7 @@
 Welcome to my digital portfolio! This README file provides a sneak peek into my portfolio, showcasing some of my work and skills. For a more detailed and interactive experience, please visit my website.
 
 ## About Me
-I am a passionate software engineer with expertise in web development and a strong background in Python, Java, C++, and AI. I love creating technical solutions to problems
+I am a passionate software engineer with expertise in web development and a strong background in Python, Java, C++, and . I love creating user-friendly and visually appealing websites that deliver a seamless user experience.
 
 ## Projects
 Here are a few highlights from my portfolio:
