@@ -15,7 +15,7 @@ I am a passionate software engineer with expertise in web development and a stro
 - Python
 - Java
 - C++
-- And more..
+- And More!
 
 ## Contact Me
 To learn more about my work or to discuss potential collaborations, feel free to reach out to me at [adammhal@gmail.com](mailto:adammhal@gmail.com).
