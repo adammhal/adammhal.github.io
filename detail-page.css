@@ -1,0 +1,274 @@
+@font-face {
+    font-family: 'ND Astroneer';
+    src: url('assets/ndastroneer.ttf') format('truetype');
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #0b0c1a;
+    color: #f0f0f0;
+    font-family: 'ND Astroneer', system-ui, sans-serif;
+}
+
+canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.detail-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.planet-viewer {
+    flex: 1;
+    position: relative;
+    height: 100vh;
+}
+
+.content-viewer {
+    flex: 1;
+    padding: 50px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    background-color: rgba(20, 20, 40, 0.5);
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--planet-color, #8A2BE2);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.content-header h1 {
+    margin: 0;
+    font-size: 3em;
+    color: var(--planet-color, #8A2BE2);
+    text-shadow: 0 0 15px var(--planet-color, #8A2BE2);
+}
+
+.back-button {
+    font-family: 'ND Astroneer', sans-serif;
+    text-decoration: none;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    padding: 12px 24px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.back-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--planet-color, #8A2BE2);
+    color: var(--planet-color, #8A2BE2);
+    box-shadow: 0 0 15px -5px var(--planet-color, #8A2BE2);
+}
+
+.content-body h2 {
+    font-size: 1.8em;
+    color: #ffffff;
+    margin-top: 40px;
+}
+
+.content-body p,
+.content-body li {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #d0d0d0;
+}
+
+.content-body a {
+    color: inherit;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.content-body a:hover {
+    color: var(--planet-color, #8A2BE2);
+}
+
+.content-body ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.content-body li {
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    padding: 15px;
+    border-left: 3px solid var(--planet-color, #8A2BE2);
+}
+
+#detail-tooltip {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    width: 250px;
+    background-image: linear-gradient(45deg, rgba(20, 20, 40, 0.85), rgba(30, 30, 55, 0.9));
+    padding: 15px 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 25px -5px var(--planet-color, #ffffff);
+    z-index: 99;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    font-family: 'ND Astroneer', system-ui, sans-serif;
+}
+
+#detail-tooltip.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#detail-tooltip .tooltip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2em;
+    color: var(--planet-color, #ffffff);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--planet-color, #ffffff);
+}
+
+#detail-tooltip #detail-tooltip-close {
+    font-family: system-ui, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#detail-tooltip #detail-tooltip-close:hover {
+    color: #ff4d4d;
+}
+
+#detail-tooltip ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9em;
+}
+
+#detail-tooltip li {
+    margin-bottom: 8px;
+    color: #d0d0d0;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+#detail-tooltip li strong {
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+.project-item {
+    display: flex;
+    flex-direction: column;
+    /* Changed from row to column */
+    gap: 20px;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-image-link {
+    display: block;
+    width: 100%;
+}
+
+.project-image-container {
+    width: 100%;
+}
+
+.project-image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 0;
+    box-shadow:
+        0 0 15px rgba(255, 255, 255, 0.1),
+        0 0 25px var(--planet-color, #8A2BE2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-image-link:hover img {
+    transform: scale(1.02);
+    box-shadow:
+        0 0 25px rgba(255, 255, 255, 0.2),
+        0 0 40px var(--planet-color, #8A2BE2);
+}
+
+.project-text-content {
+    flex: 1;
+}
+
+/* --- RESPONSIVE STYLES FOR MOBILE --- */
+@media (max-width: 768px) {
+
+    html,
+    body {
+        overflow: auto;
+        /* Allow scrolling on mobile */
+    }
+
+    .detail-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .planet-viewer {
+        flex: none;
+        height: 50vh;
+        width: 100vw;
+    }
+
+    .content-viewer {
+        flex: none;
+        width: 100%;
+        padding: 25px;
+        height: auto;
+        overflow-y: visible;
+    }
+
+    .content-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .content-header h1 {
+        font-size: 2.2em;
+    }
+
+    .back-button {
+        font-size: 0.9em;
+        padding: 10px 20px;
+    }
+
+    .content-body h2 {
+        font-size: 1.5em;
+    }
+
+    .content-body p,
+    .content-body li {
+        font-size: 1em;
+    }
+
+    #detail-tooltip {
+        width: auto;
+        max-width: 220px;
+        left: 20px;
+        bottom: 20px;
+    }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Contact - Adam Mhal</title>
+    <link rel="stylesheet" href="detail-page.css" />
+</head>
+<body>
+    <iframe id="music-iframe" src="music-player.html" style="display:none;" allow="autoplay"></iframe>
+    <div class="detail-container">
+        <div class="planet-viewer">
+            <canvas id="planet-canvas-detail"></canvas>
+            <div id="detail-tooltip" class="hidden">
+                <div class="tooltip-header">
+                    <span>Interactive Planet</span>
+                    <span id="detail-tooltip-close">X</span>
+                </div>
+                <ul>
+                    <li><strong>Drag</strong> to rotate the planet.</li>
+                    <li><strong>'H'</strong> to toggle this help message.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="content-viewer">
+            <div class="content-header">
+                <h1>Contact</h1>
+                <a href="index.html" class="back-button">Back to Solar System</a>
+            </div>
+            <div class="content-body">
+                <h2>Get In Touch</h2>
+                <p>Below are the details to reach out to me!</p>
+                
+                <ul>
+                    <li><strong>Email:</strong> <a href="mailto:adammhal@gmail.com">adammhal@gmail.com</a></li>
+                    <li><strong>Phone:</strong> <a href="tel:+19726740815">+1 (972) 674-0815</a></li>
+                    <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/adammhal" target="_blank" rel="noopener noreferrer">linkedin.com/in/adammhal</a></li>
+                    <li><strong>GitHub:</strong> <a href="https://github.com/adammhal" target="_blank" rel="noopener noreferrer">github.com/adammhal</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <script type="importmap">
+        { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }
+    </script>
+    <script type="module" src="detail-page.js"></script>
+</body>
+</html>

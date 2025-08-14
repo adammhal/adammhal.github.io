@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Main Music</title>
+</head>
+<body>
+  <audio id="main-music" src="assets/sounds/background.mp3" autoplay loop></audio>
+  <script>
+    const music = document.getElementById('main-music');
+    music.volume = 0.04;
+
+    window.addEventListener('message', (event) => {
+      if (event.data === 'play') music.play();
+      if (event.data === 'pause') music.pause();
+    });
+  </script>
+</body>
+</html>

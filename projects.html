@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Projects - Adam Mhal</title>
+    <link rel="stylesheet" href="detail-page.css" />
+</head>
+<body>
+    <iframe id="music-iframe" src="music-player.html" style="display:none;" allow="autoplay"></iframe>
+    <div class="detail-container">
+        <div class="planet-viewer">
+            <canvas id="planet-canvas-detail"></canvas>
+            <div id="detail-tooltip" class="hidden">
+                <div class="tooltip-header">
+                    <span>Interactive Planet</span>
+                    <span id="detail-tooltip-close">X</span>
+                </div>
+                <ul>
+                    <li><strong>Drag</strong> to rotate the planet.</li>
+                    <li><strong>'H'</strong> to toggle this help message.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-viewer">
+            <div class="content-header">
+                <h1>Projects</h1>
+                <a href="index.html" class="back-button">Back to Solar System</a>
+            </div>
+            <div class="content-body">
+                <h2>Project Showcase</h2>
+                <p>Below are the projects that I have completed or am currently maintaining to demonstrate my proficiency in various software development skills. You can click the images to open the respective repository.</p>
+                
+                <div class="project-item">
+                    <a href="https://github.com/adammhal/adammhal.github.io" target="_blank" class="project-image-link">
+                        <div class="project-image-container">
+                            <img src="assets/images/new-portfolio.png" alt="Interactive 3D Portfolio Project Image">
+                        </div>
+                    </a>
+                    <div class="project-text-content">
+                        <h3>Interactive 3D Portfolio</h3>
+                        <p>A personal portfolio website designed as an interactive 3D solar system. Built from scratch using Three.js, the site features custom GLSL shaders for the sun, post-processing effects like bloom, and GSAP-powered camera animations. The project includes GLTF model loading for planets and a hidden rocket flight simulator Easter egg.</p>
+                        <p><strong>Skills:</strong> Three.js, WebGL, GLSL, JavaScript, GSAP, HTML5, CSS3, 3D Modeling.</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <a href="https://github.com/adammhal/EC504-Final-Project" target="_blank" class="project-image-link">
+                        <div class="project-image-container">
+                           <img src="assets/images/ec504-project.png" alt="Red-Black Tree Visualizer Project Image">
+                       </div>
+                    </a>
+                   <div class="project-text-content">
+                       <h3>Interactive Red-Black Tree Visualizer</h3>
+                       <p>As part of a 4-person team for a university course (EC504), developed a full-stack web application to visualize the inner workings of a Red-Black Tree. The Java back-end handles the data structure's logic and serves the tree state via a custom HTTP server, while the front-end uses plain JavaScript and SVG to render animated insertions, deletions, and rebalancing operations in real time.</p>
+                       <p><strong>Skills:</strong> Java, JavaScript, HTML, CSS, SVG, Data Structures & Algorithms, Full-Stack Development.</p>
+                   </div>
+               </div>
+
+                <div class="project-item">
+                    <a href="https://github.com/adammhal/Weather-App-With-AI" target="_blank" class="project-image-link">
+                        <div class="project-image-container">
+                           <img src="assets/images/weather-app.png" alt="AI Weather App Project Image">
+                       </div>
+                    </a>
+                   <div class="project-text-content">
+                       <h3>AI-Powered Weather App</h3>
+                       <p>An iOS application built with SwiftUI that provides real-time weather information and personalized clothing recommendations. The app features a sleek, modern interface and leverages the GPT-4 API to suggest appropriate attire based on the current weather conditions.</p>
+                       <p><strong>Skills:</strong> Swift, SwiftUI, GPT-4 API, URLSession, API Integration, Mobile App Development.</p>
+                   </div>
+               </div>
+
+                <div class="project-item">
+                    <a href="https://github.com/adammhal/ai-agent" target="_blank" class="project-image-link">
+                        <div class="project-image-container">
+                            <img src="https://placehold.co/600x400/2a2a2a/ffffff?text=In+Progress!" alt="Personalized AI Agent Project In Progress">
+                        </div>
+                    </a>
+                    <div class="project-text-content">
+                        <h3>KAIROS</h3>
+                        <p>Fine-tuned open-source LLMs on a custom dataset of personal conversations and code to create a personalized AI assistant. The model replicates my unique communication style and intelligently adapts its tone for different audiences. The system uses a model cascade architecture, employing a fast model (Qwen2.5 VL 7B) for quick interactions and a larger model (Gemma 3 27B) for complex reasoning.</p>
+                        <p><strong>Skills:</strong> Supervised Fine-Tuning, QLoRA, LLMs, Agentic Systems, Model Cascading, NLP, Python, Hugging Face, Axolotl, Google Colab, JSONL.</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <a href="https://github.com/jyz0328/Facial-Expression-Recognition-" target="_blank" class="project-image-link">
+                        <div class="project-image-container">
+                           <img src="assets/images/face-recognition-project.png" alt="Facial Expression Recognition Project Image">
+                       </div>
+                    </a>
+                   <div class="project-text-content">
+                       <h3>Facial Expression Recognition</h3>
+                       <p>As part of a 4-person team, developed a deep learning system to classify facial expressions. The project involved implementing and improving both CNN and ResNet architectures on the AffectNet dataset. My primary contribution was building and evaluating a conditional GAN to generate expressive faces from neutral inputs, enhancing the model's understanding of emotion-specific features.</p>
+                       <p><strong>Skills:</strong> Python, PyTorch, Deep Learning, Computer Vision, CNN, ResNet, GANs, Data Augmentation, Team Collaboration.</p>
+                   </div>
+               </div>
+
+                <div class="project-item">
+                    <a href="https://github.com/adammhal/dionysus" target="_blank" class="project-image-link">
+                        <div class="project-image-container">
+                            <img src="assets/images/dionysus.png" alt="Dionysus Project Image">
+                        </div>
+                    </a>
+                    <div class="project-text-content">
+                        <h3>Dionysus</h3>
+                        <p>Architected a multi-platform media aggregation service (iOS, tvOS, etc.) with a concurrent Python/FastAPI backend that asynchronously scrapes and caches data from multiple sources. Developed 5 distinct, native SwiftUI frontends from a shared codebase, featuring a dynamic theming system and custom UI components.</p>
+                        <p><strong>Skills:</strong> Swift, SwiftUI, Python, FastAPI, CoreHaptics, tvOS, macOS, watchOS, iPadOS, RESTful APIs.</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <a href="https://github.com/adammhal/route-scout" target="_blank" class="project-image-link">
+                        <div class="project-image-container">
+                            <img src="https://placehold.co/600x400/2a2a2a/ffffff?text=Private+Project" alt="Route Scout Project Image">
+                        </div>
+                    </a>
+                    <div class="project-text-content">
+                        <h3>Route Scout</h3>
+                        <p>Developed a full-stack network visualization tool to automate packet tracing across Verizon’s core network, reducing diagnostic time for 50k+ engineers from hours to seconds. Engineered a Python/Flask backend and a dynamic JavaScript frontend to render interactive, bi-directional path visualizations.</p>
+                        <p><strong>Skills:</strong> Python, Flask, JavaScript, HTML/CSS, SQL, Jinja2, RESTful APIs.</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <a href="https://github.com/adammhal/f1-ar" target="_blank" class="project-image-link">
+                        <div class="project-image-container">
+                            <img src="assets/images/f1-ar.png" alt="F1 AR Project Image">
+                        </a>
+                    </div>
+                    <div class="project-text-content">
+                        <h3>F1 AR</h3>
+                        <p>Engineered an iOS application using ARKit and RealityKit to project and animate historical Formula 1 race data, allowing users to visualize entire races in their physical environment. Architected a scalable Python/FastAPI backend on AWS to process and serve large telemetry datasets and 3D models.</p>
+                        <p><strong>Skills:</strong> Swift, ARKit, RealityKit, Python, FastAPI, AWS S3, SceneKit.</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <a href="https://github.com/adammhal/smart-glasses" target="_blank" class="project-image-link">
+                        <div class="project-image-container">
+                            <img src="https://placehold.co/600x400/2a2a2a/ffffff?text=In+Progress!" alt="Smart Glasses Project Image">
+                        </a>
+                    </div>
+                    <div class="project-text-content">
+                        <h3>Smart Glasses</h3>
+                        <p>Developed smart glasses using an Arduino Nano, programmed in C++ to display real-time notifications and information like media, time, date, and local weather, with Bluetooth communication for smartphone integration. The code for the glasses themselves (not the companion app) has been created and is viewable when clicking above.</p>
+                        <p><strong>Skills:</strong> Arduino Nano, C++, Bluetooth, OLED Display, Mobile App Development.</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <a href="https://github.com/adammhal/PoliAware" target="_blank" class="project-image-link">
+                        <div class="project-image-container">
+                            <img src="assets/images/poliaware.png" alt="PoliAware Project Image">
+                        </a>
+                    </div>
+                    <div class="project-text-content">
+                        <h3>PoliAware</h3>
+                        <p>Developed a website for the Congressional App Challenge, leveraging personalized GPT-4 and Bard models to extract information on government representatives from credible news sources. Built with HTML, CSS, Python, and Flask, and managed with Git. Since launch, the site has attracted over 2000 visitors, averaging 30 daily users during its peak. The website can still be found at <a href="https://adammhal.pythonanywhere.com" target="_blank">adammhal.pythonanywhere.com</a>.</p>
+                        <p><strong>Skills:</strong> Python, HTML, CSS, Flask, Git, Generative AI Tools, Web Development</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <a href="https://github.com/adammhal/edueval" target="_blank" class="project-image-link">
+                        <div class="project-image-container">
+                            <img src="assets/images/edueval.png" alt="EduEval Project Image">
+                        </a>
+                    </div>
+                    <div class="project-text-content">
+                        <h3>EduEval</h3>
+                        <p>Engineered a Discord bot using Python to process and analyze teacher applicants' video content. Utilized advanced video processing, NLP with BERT and GPT-3, and machine learning to evaluate teaching skills, resulting in a 150% efficiency improvement in the evaluation process. Managed with Git and developed with Python. The above image is an output of what the bot would produce.</p>
+                        <p><strong>Skills:</strong> Python, Git, BERT, GPT-3, Machine Learning, Generative AI Tools</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <a href="https://github.com/adammhal/hackhardware-comp-spring-2025" target="_blank" class="project-image-link">
+                        <div class="project-image-container">
+                            <img src="assets/images/hackathon-robot.jpg" alt="Electromagnetic Sorting Rover Project Image">
+                        </a>
+                    </div>
+                    <div class="project-text-content">
+                        <h3>Electromagnetic Sorting Rover</h3>
+                        <p>As part of a 4-person team, designed and built an autonomous rover for the BU HackHardware and Rastic collaboration, securing 3rd place. The robot, built on an ESP32 platform with Mecanum wheels, uses an electromagnetic arm to pick up metal coins and sort them into colored bins. The system was programmed in C++ using the Arduino framework and controlled via Bluetooth.</p>
+                        <p><strong>Skills:</strong> C++, Arduino, ESP32, Robotics, Electromagnetism, Motor Control, Bluetooth, Team Collaboration</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <script type="importmap">
+        { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }
+    </script>
+    <script type="module" src="detail-page.js"></script>
+</body>
+</html>

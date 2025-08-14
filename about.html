@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>About Me & Skills - Adam Mhal</title>
+    <link rel="stylesheet" href="detail-page.css" />
+</head>
+<body>
+    <iframe id="music-iframe" src="music-player.html" style="display:none;" allow="autoplay"></iframe>
+    <div class="detail-container">
+        <div class="planet-viewer">
+            <canvas id="planet-canvas-detail"></canvas>
+            <div id="detail-tooltip" class="hidden">
+                <div class="tooltip-header">
+                    <span>Interactive Planet</span>
+                    <span id="detail-tooltip-close">X</span>
+                </div>
+                <ul>
+                    <li><strong>Drag</strong> to rotate the planet.</li>
+                    <li><strong>'H'</strong> to toggle this help message.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-viewer">
+            <div class="content-header">
+                <h1>About Me & Skills</h1>
+                <a href="index.html" class="back-button">Back to Solar System</a>
+            </div>
+            <div class="content-body">
+                <h2>About Me</h2>
+                <p>I'm Adam Mhal, a computer engineering student passionate about creating interactive, dynamic projects.</p>
+                <p>Currently, I'm building my portfolio, exploring real-time graphics, and recently completed a full-stack internship at Verizon.</p>
+                <p>My experience spans robotics, embedded systems, web development, and data science. I thrive on solving problems and improving systems.</p>
+                <p>Interested in collaborating or need help with a project? Reach out anytime.</p>
+                <h2>Core Competencies</h2>
+                 <ul>
+                    <li><strong>Languages:</strong> Java, Python, Swift, Kotlin, C/C++, SQL, Bash, JavaScript, HTML, MATLAB, CSS</li>
+                    <li><strong>Technologies:</strong> PyTorch, Tensorflow, Node.js, Flask, React, React Native, Firebase, SwiftUI, Core Data, Cloud Firestore, UIKit, Android SDK, Xcode, Android Studio, ARKit, Bluetooth LE, MapKit</li>
+                    <li><strong>Developer Tools:</strong> Git, GCP, VS Code, Visual Studio, Xcode, PyCharm, IntelliJ, Webstorm, Azure, AWS, Android Studio, .NET, Unity, Unreal Engine</li>
+                    <li><strong>Concepts:</strong> Mobile App Development, Machine Learning, Deep Learning, NLP, Generative A.I., Agile Methodology, Regression, Statistical Analysis, Robotics, UI/UX Design, RESTful APIs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <script type="importmap">
+        { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }
+    </script>
+    <script type="module" src="detail-page.js"></script>
+</body>
+</html>

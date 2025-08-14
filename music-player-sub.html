@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Subpage Music</title>
+</head>
+<body>
+  <audio id="sub-music" src="assets/sounds/sub.mp3" autoplay loop></audio>
+  <script>
+    const music = document.getElementById('sub-music');
+    music.volume = 0.1;
+
+    window.addEventListener('message', (event) => {
+      if (event.data === 'play') music.play();
+      if (event.data === 'pause') music.pause();
+    });
+  </script>
+</body>
+</html>

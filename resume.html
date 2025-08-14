@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Education & Experience - Adam Mhal</title>
+    <link rel="stylesheet" href="detail-page.css" />
+</head>
+<body>
+    <iframe id="music-iframe" src="music-player.html" style="display:none;" allow="autoplay"></iframe>
+    <div class="detail-container">
+        <div class="planet-viewer">
+            <canvas id="planet-canvas-detail"></canvas>
+            <div id="detail-tooltip" class="hidden">
+                <div class="tooltip-header">
+                    <span>Interactive Planet</span>
+                    <span id="detail-tooltip-close">X</span>
+                </div>
+                <ul>
+                    <li><strong>Drag</strong> to rotate the planet.</li>
+                    <li><strong>'H'</strong> to toggle this help message.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-viewer">
+            <div class="content-header">
+                <h1>Education & Experience</h1>
+                <a href="index.html" class="back-button">Back to Solar System</a>
+            </div>
+            <div class="content-body">
+                <h2>Professional Journey</h2>
+                <p>I'm a software engineer who loves bringing ideas to life by selecting the right tool for the job. My experience spans multiple languages and platforms, allowing me to build everything from an F1 augmented reality experience to network tools that cut diagnostic time by 50%. I enjoy tackling the full development lifecycle, from architecting scalable systems to optimizing code for peak performance.</p>
+                
+                <a href="assets/resume/AdamMhalResume.pdf" target="_blank" class="back-button" style="display: inline-block; margin-bottom: 30px;">Download Full Resume</a>
+
+                <div class="experience-item">
+                    <h2>Education</h2>
+                    <h3>Boston University - Bachelor's in Computer Engineering (Expected May 2027)</h3>
+                    <ul>
+                        <li><strong>Relevant Coursework:</strong> Linear Algebra, Multivariable Calculus, Deep Learning, Advanced Data Structures and Algorithms</li>
+                        <li>GPA: 3.9</li>
+                    </ul>
+                    <h3>Plano Senior High School (August 2022 - May 2024)</h3>
+                    <ul>
+                        <li>Graduated Ranked 6th out of 1100 students</li>
+                        <li>GPA: 4.69</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h2>Experience</h2>
+                    <h3>Full Stack Software Development Intern at Verizon (June 2025 - August 2025)</h3>
+                    <ul>
+                        <li>Built backend services in Python for Route Scout, a tool used by engineers to trace packet flow through Verizon's core network and identify faults between nodes.</li>
+                        <li>Designed and implemented structured data pipelines to pass network metadata to the frontend using Jinja2 templating, HTML, and JavaScript.</li>
+                        <li>Refactored and optimized over 1,000 lines of legacy code to improve runtime efficiency and readability.</li>
+                        <li>Used SQL to query historical routing metadata from internal databases, enabling time-based lookups for fault diagnosis.</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>Software Engineering Intern at Boostability (June 2024 - September 2024)</h3>
+                    <ul>
+                        <li>Developed and maintained the backend of a productivity application using Python and AI technologies, aimed at helping college students with ADHD manage their tasks.</li>
+                        <li>Collaborated with a team of software engineers to design and implement an AI-based task breakdown and recommendation system.</li>
+                        <li>Performed testing and debugging to ensure accuracy and reliability of the task management features.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Lead Software Developer at AiGoLearning (March 2023 - June 2024)</h3>
+                    <ul>
+                        <li>Integrated a GPT-4 LLM chatbot through the OpenAI API into the AiGoLearning system, allowing new teachers to receive interactive feedback on their teaching performance.</li>
+                        <li>Led development teams and provided engineering leadership for various educational software projects.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Computer Science Teacher at Thinkland.AI (April 2021 - June 2024)</h3>
+                    <ul>
+                        <li>Taught over 250 students in over 50 lectures on advanced data structures, algorithms, and natural language processing, including an introduction to generative AI.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Electrical Engineering Intern at Tesla Alarm (March 2023 - August 2023)</h3>
+                    <ul>
+                        <li>Conducted electrical systems analysis and branch circuiting, along with site investigations to assess infrastructure and identify improvements.</li>
+                        <li>Executed lighting calculations and created detailed design drawings, ensuring energy efficiency and adherence to industry standards.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <script type="importmap">
+        { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }
+    </script>
+    <script type="module" src="detail-page.js"></script>
+</body>
+</html>
