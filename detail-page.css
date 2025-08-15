@@ -213,13 +213,11 @@ canvas {
     flex: 1;
 }
 
-/* --- RESPONSIVE STYLES FOR MOBILE --- */
 @media (max-width: 768px) {
 
     html,
     body {
         overflow: auto;
-        /* Allow scrolling on mobile */
     }
 
     .detail-container {
@@ -271,4 +269,234 @@ canvas {
         left: 20px;
         bottom: 20px;
     }
+}
+
+#spotify-widget, #steam-widget-container {
+    margin: 60px 0;
+    padding: 25px;
+    background-color: rgba(11, 12, 26, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+#spotify-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    color: #d0d0d0;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top-color: var(--planet-color, #8A2BE2);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#spotify-content.hidden {
+    display: none;
+}
+
+.spotify-section h3 {
+    font-size: 1.5em;
+    color: #ffffff;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--planet-color, #8A2BE2);
+}
+
+.now-playing-card {
+    display: flex;
+    gap: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin-bottom: 40px;
+    border-left: 4px solid var(--planet-color, #8A2BE2);
+    box-shadow: 0 0 20px -10px var(--planet-color, #8A2BE2);
+}
+
+.now-playing-card img {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+}
+
+.now-playing-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.now-playing-header {
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--planet-color, #8A2BE2);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.now-playing-header .live-indicator {
+    width: 10px;
+    height: 10px;
+    background-color: #00FF7F;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00FF7F;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.now-playing-title {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #f0f0f0;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.now-playing-title:hover {
+    color: var(--planet-color, #8A2BE2);
+}
+
+.now-playing-artist {
+    font-size: 1.1em;
+    color: #d0d0d0;
+    margin-top: 5px;
+}
+
+
+.spotify-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 20px;
+}
+
+.spotify-grid.artists {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+}
+
+.spotify-item {
+    background-color: rgba(0, 0, 0, 0.2);
+    text-align: center;
+    text-decoration: none;
+    color: #d0d0d0;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.spotify-item:hover {
+    transform: translateY(-5px);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: var(--planet-color, #8A2BE2);
+}
+
+.spotify-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.spotify-item .artist-image {
+    border-radius: 50%;
+    padding: 0px;
+}
+
+.spotify-item-info {
+    padding: 15px 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.spotify-item-title {
+    display: block;
+    font-weight: bold;
+    color: #f0f0f0;
+    margin-bottom: 5px;
+}
+
+hr {
+    border: none;
+    height: 2px;
+    background-color: var(--planet-color, #8A2BE2);
+}
+
+.steam-card {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    color: #d0d0d0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.steam-card:hover {
+    box-shadow: 0 0 20px -10px var(--planet-color, #8A2BE2);
+    border-left-color: var(--planet-color, #8A2BE2);
+}
+
+.steam-card:hover .steam-card-title {
+    color: var(--planet-color, #8A2BE2);
+}
+
+.steam-card:hover .steam-card-description {
+    color: var(--planet-color, #8A2BE2);
+}
+
+.steam-card-image {
+    width: 220px;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+.steam-card-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.steam-card-title {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #f0f0f0;
+    margin: 0 0 10px 0;
+    transition: color 0.3s ease;
+}
+
+.steam-card-description {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 1em;
+    transition: color 0.3s ease;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }

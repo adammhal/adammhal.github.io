@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="detail-page.css" />
 </head>
 <body>
-    <iframe id="music-iframe" src="music-player.html" style="display:none;" allow="autoplay"></iframe>
+    <iframe id="music-iframe" src="music-player-sub.html" style="display:none;" allow="autoplay"></iframe>
     <div class="detail-container">
         <div class="planet-viewer">
             <canvas id="planet-canvas-detail"></canvas>
@@ -33,14 +33,46 @@
                 <p>I'm Adam Mhal, a computer engineering student passionate about creating interactive, dynamic projects.</p>
                 <p>Currently, I'm building my portfolio, exploring real-time graphics, and recently completed a full-stack internship at Verizon.</p>
                 <p>My experience spans robotics, embedded systems, web development, and data science. I thrive on solving problems and improving systems.</p>
-                <p>Interested in collaborating or need help with a project? Reach out anytime.</p>
-                <h2>Core Competencies</h2>
+                <p>During my freetime I love cooking, listening to music, and playing a good story game. Look below for more info.</p>
+                <p>Interested in collaborating or need help with a project? Feel free to reach out anytime.</p>
+
+                <h2>Skills</h2>
+                <hr>
                  <ul>
                     <li><strong>Languages:</strong> Java, Python, Swift, Kotlin, C/C++, SQL, Bash, JavaScript, HTML, MATLAB, CSS</li>
                     <li><strong>Technologies:</strong> PyTorch, Tensorflow, Node.js, Flask, React, React Native, Firebase, SwiftUI, Core Data, Cloud Firestore, UIKit, Android SDK, Xcode, Android Studio, ARKit, Bluetooth LE, MapKit</li>
                     <li><strong>Developer Tools:</strong> Git, GCP, VS Code, Visual Studio, Xcode, PyCharm, IntelliJ, Webstorm, Azure, AWS, Android Studio, .NET, Unity, Unreal Engine</li>
                     <li><strong>Concepts:</strong> Mobile App Development, Machine Learning, Deep Learning, NLP, Generative A.I., Agile Methodology, Regression, Statistical Analysis, Robotics, UI/UX Design, RESTful APIs</li>
                 </ul>
+
+
+                <h2>Interests</h2>
+                <hr>
+                 <div id="spotify-widget">
+                    <div id="spotify-loading">
+                        <div class="spinner"></div>
+                        <p>Accessing Spotify Listening Data...</p>
+                    </div>
+                    
+                    <div id="spotify-content" class="hidden">
+                        <div id="spotify-now-playing"></div>
+
+                        <div class="spotify-section">
+                            <h3>Top Tracks This Month</h3>
+                            <div id="spotify-top-tracks" class="spotify-grid">
+                            </div>
+                        </div>
+
+                        <div class="spotify-section">
+                            <h3>Top Artists This Month</h3>
+                            <div id="spotify-top-artists" class="spotify-grid artists">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="steam-widget-container">
+                </div>
             </div>
         </div>
     </div>
@@ -50,5 +82,7 @@
         { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }
     </script>
     <script type="module" src="detail-page.js"></script>
+    <!-- Add the new Spotify script -->
+    <script type="module" src="spotify-steam-integration.js"></script>
 </body>
 </html>
