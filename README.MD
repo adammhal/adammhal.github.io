@@ -1,6 +1,6 @@
 # Interactive 3D Portfolio
 
-![Portfolio Screenshot](assets/images/new-portfolio.jpg)
+![Portfolio Screenshot](assets/images/new-portfolio.png)
 
 This repository contains the code for my personal portfolio website, designed as an interactive 3D solar system. The site showcases my skills and projects in a dynamic and engaging way, built from the ground up using modern web technologies.
 
