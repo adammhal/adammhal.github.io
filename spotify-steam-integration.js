@@ -1,4 +1,4 @@
-const currentlyPlayingGameID = '753640'; 
+const currentlyPlayingGameID = '1593500'; 
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchAllData();
