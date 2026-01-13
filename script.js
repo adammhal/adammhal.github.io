@@ -47,7 +47,7 @@ controls.enableDamping = true;
 controls.minDistance = 5;
 controls.maxDistance = 150;
 if (isMobile) {
-    controls.enablePan = true; 
+    controls.enablePan = true;
     controls.panSpeed = 0.5;
     controls.touchDamping = 0.1;
 }
@@ -93,17 +93,17 @@ planetData.forEach(data => {
         const model = gltf.scene;
         const scale = data.modelScale || 1.0;
         model.scale.set(scale, scale, scale);
-        
+
         model.position.x = data.orbitRadius;
-        
+
         let planetMesh;
         model.traverse((child) => { if (child.isMesh && !planetMesh) planetMesh = child; });
 
         const clickableTarget = planetMesh || model;
         clickableTarget.userData = { name: data.name, info: data.info, color: data.atmosphereColor, detailPage: data.detailPage, isPlanet: true };
         clickableObjects.push(clickableTarget);
-        
-        const atmosphere = new THREE.Mesh( new THREE.SphereGeometry(1, 32, 32), new THREE.ShaderMaterial({ vertexShader: atmosphereVertexShader, fragmentShader: atmosphereFragmentShader, blending: THREE.AdditiveBlending, side: THREE.BackSide, uniforms: { u_color: { value: new THREE.Color(data.atmosphereColor) } } }) );
+
+        const atmosphere = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 32), new THREE.ShaderMaterial({ vertexShader: atmosphereVertexShader, fragmentShader: atmosphereFragmentShader, blending: THREE.AdditiveBlending, side: THREE.BackSide, uniforms: { u_color: { value: new THREE.Color(data.atmosphereColor) } } }));
         atmosphere.scale.set(1.15, 1.15, 1.15);
         model.add(atmosphere);
 
@@ -127,42 +127,55 @@ if (rocketTutorialCloseBtn) {
 }
 
 let focusedPlanet = null;
+let isTransitioning = false;
+const transitionProgress = { t: 0 };
+const startCameraPos = new THREE.Vector3();
+const startTargetPos = new THREE.Vector3();
+
 function focusOnPlanet(planet) {
-    if (!planet) return;
+    if (!planet || isTransitioning || planet === focusedPlanet) return;
     const previouslyFocused = focusedPlanet;
     focusedPlanet = planet;
-    
+
     if (!previouslyFocused) { controls.enabled = false; }
 
-    const targetPosition = new THREE.Vector3();
-    planet.getWorldPosition(targetPosition);
-    
-    const boundingSphere = new THREE.Box3().setFromObject(planet).getBoundingSphere(new THREE.Sphere());
-    const planetRadius = boundingSphere.radius;
+    if (!planet.userData.radius) {
+        const boundingSphere = new THREE.Box3().setFromObject(planet).getBoundingSphere(new THREE.Sphere());
+        planet.userData.radius = boundingSphere.radius;
+    }
 
-    const offsetMultiplier = isMobile ? 8 : 5;
-    const desiredPosition = new THREE.Vector3(targetPosition.x - (planetRadius * offsetMultiplier), targetPosition.y + (planetRadius * 2), targetPosition.z);
+    startCameraPos.copy(camera.position);
+    startTargetPos.copy(controls.target);
 
-    gsap.to(camera.position, { duration: 1.5, x: desiredPosition.x, y: desiredPosition.y, z: desiredPosition.z, ease: 'power2.inOut' });
-    gsap.to(controls.target, { duration: 1.5, x: targetPosition.x, y: targetPosition.y, z: targetPosition.z, ease: 'power2.inOut' });
+    isTransitioning = true;
+    transitionProgress.t = 0;
+
+    gsap.to(transitionProgress, {
+        duration: 1.5,
+        t: 1,
+        ease: 'power2.inOut',
+        onComplete: () => { isTransitioning = false; }
+    });
 
     if (!isMobile) {
+        const targetPosition = new THREE.Vector3();
+        planet.getWorldPosition(targetPosition);
         const screenPosition = targetPosition.clone().project(camera);
-        if (screenPosition.x < -0.2) { infoBox.classList.add('position-right'); infoBox.classList.remove('position-left'); } 
+        if (screenPosition.x < -0.2) { infoBox.classList.add('position-right'); infoBox.classList.remove('position-left'); }
         else { infoBox.classList.add('position-left'); infoBox.classList.remove('position-right'); }
     }
 
     document.getElementById('info-title').innerText = planet.userData.name;
     document.getElementById('info-content').innerText = planet.userData.info;
     infoBox.style.setProperty('--planet-color', planet.userData.color);
-    
+
     if (planet.userData.detailPage && planet.userData.detailPage !== '#') {
         readMoreBtn.href = planet.userData.detailPage;
         readMoreBtn.style.display = 'inline-block';
     } else {
         readMoreBtn.style.display = 'none';
     }
-    
+
     infoBox.classList.remove('hidden');
     updateNavActiveState(planet.userData.name, planet.userData.color);
     hideTooltip();
@@ -170,9 +183,18 @@ function focusOnPlanet(planet) {
 }
 
 function resetCameraView() {
+    if (isTransitioning) return;
     focusedPlanet = null;
+    isTransitioning = true;
     controls.enabled = true;
-    gsap.to(camera.position, { duration: 1.5, x: defaultCameraPosition.x, y: defaultCameraPosition.y, z: defaultCameraPosition.z, ease: 'power2.inOut' });
+    gsap.to(camera.position, {
+        duration: 1.5,
+        x: defaultCameraPosition.x,
+        y: defaultCameraPosition.y,
+        z: defaultCameraPosition.z,
+        ease: 'power2.inOut',
+        onComplete: () => { isTransitioning = false; }
+    });
     gsap.to(controls.target, { duration: 1.5, x: 0, y: 0, z: 0, ease: 'power2.inOut' });
     infoBox.classList.add('hidden');
     updateNavActiveState(null, '#ffffff');
@@ -189,21 +211,26 @@ function animate() {
     requestAnimationFrame(animate);
     const elapsedTime = clock.getElapsedTime();
     sun.material.uniforms.u_time.value = elapsedTime;
-    
+
     planetGroups.forEach(p => {
         p.group.rotation.y += p.speed;
         p.planet.rotation.y += 0.005;
     });
-    
+
     if (focusedPlanet) {
         const targetPosition = new THREE.Vector3();
         focusedPlanet.getWorldPosition(targetPosition);
-        const boundingSphere = new THREE.Box3().setFromObject(focusedPlanet).getBoundingSphere(new THREE.Sphere());
-        const planetRadius = boundingSphere.radius;
+        const planetRadius = focusedPlanet.userData.radius || 1;
         const offsetMultiplier = isMobile ? 8 : 5;
         const desiredPosition = new THREE.Vector3(targetPosition.x - (planetRadius * offsetMultiplier), targetPosition.y + (planetRadius * 2), targetPosition.z);
-        camera.position.lerp(desiredPosition, 0.04);
-        controls.target.lerp(targetPosition, 0.04);
+
+        if (isTransitioning) {
+            camera.position.lerpVectors(startCameraPos, desiredPosition, transitionProgress.t);
+            controls.target.lerpVectors(startTargetPos, targetPosition, transitionProgress.t);
+        } else {
+            camera.position.copy(desiredPosition);
+            controls.target.copy(targetPosition);
+        }
     }
 
     controls.update();
@@ -217,9 +244,9 @@ function animate() {
 
     if (rocket && rocketControlsEnabled) {
         const rotationSpeed = 0.03;
-        const maxSpeed = 0.5;
-        const accelerationRate = 0.006;
-        const decelerationRate = 0.005;
+        const maxSpeed = 0.6;
+        const accelerationRate = 0.0004;
+        const decelerationRate = 0.0015;
 
         if (keys['w']) rocketVelocity.z = Math.max(rocketVelocity.z - accelerationRate, -maxSpeed);
         else if (keys['s']) rocketVelocity.z = Math.min(rocketVelocity.z + accelerationRate, maxSpeed);
@@ -300,7 +327,7 @@ function handleInteraction(clientX, clientY) {
         const navLinks = nav.querySelector('.nav-links');
         if (navLinks) {
             const rect = navLinks.getBoundingClientRect();
-             if (clientX >= rect.left && clientX <= rect.right && clientY >= rect.top && clientY <= rect.bottom) {
+            if (clientX >= rect.left && clientX <= rect.right && clientY >= rect.top && clientY <= rect.bottom) {
                 return;
             }
         }
@@ -308,17 +335,17 @@ function handleInteraction(clientX, clientY) {
 
     pointer.x = (clientX / window.innerWidth) * 2 - 1;
     pointer.y = -(clientY / window.innerHeight) * 2 + 1;
-    
+
     raycaster.setFromCamera(pointer, camera);
     const intersects = raycaster.intersectObjects(clickableObjects, true);
 
     if (intersects.length > 0) {
         let clickedObject = intersects[0].object;
-        while(clickedObject.parent && !clickedObject.userData.isPlanet) {
+        while (clickedObject.parent && !clickedObject.userData.isPlanet) {
             clickedObject = clickedObject.parent;
         }
         if (clickedObject.userData.isPlanet) {
-             focusOnPlanet(clickedObject);
+            focusOnPlanet(clickedObject);
         }
     }
 }
@@ -358,7 +385,7 @@ tooltipCloseBtn.addEventListener('click', hideTooltip);
 showTooltip();
 
 function showTutorial() { tutorialOverlay.classList.remove('hidden'); gsap.fromTo(tutorialOverlay, { opacity: 0 }, { opacity: 1, duration: 0.5 }); }
-function hideTutorial() { gsap.to(tutorialOverlay, { opacity: 0, duration: 0.5, onComplete: () => tutorialOverlay.classList.add('hidden')}); }
+function hideTutorial() { gsap.to(tutorialOverlay, { opacity: 0, duration: 0.5, onComplete: () => tutorialOverlay.classList.add('hidden') }); }
 
 function adaptUIToDevice() {
     const controlsList = document.querySelector('#controls-tooltip ul');
@@ -378,7 +405,7 @@ function adaptUIToDevice() {
                 <li><span>1.</span> Explore by dragging with one finger to rotate, two to pan, and pinching to zoom.</li>
                 <li><span>2.</span> Tap on any planet (or use the top navigation) to learn more about a section.</li>
             `;
-             tutorialPanel.querySelector('.tutorial-footer').style.display = 'none';
+            tutorialPanel.querySelector('.tutorial-footer').style.display = 'none';
         }
     } else {
         if (controlsList) {
@@ -477,33 +504,33 @@ function removeRocket(isAnimated) {
 }
 
 function spawnRocket() {
-  isRocketAnimating = true;
-  gltfLoader.load('assets/rocket.glb', (gltf) => {
-    rocket = gltf.scene;
-    const finalScale = 15;
-    rocket.position.set(50, 0, 0);
-    rocket.rotation.y = Math.PI / 2;
-    scene.add(rocket);
-    if (!localStorage.getItem('rocketTutorialShown')) { setTimeout(() => { rocketTutorialPanel.classList.remove('hidden'); localStorage.setItem('rocketTutorialShown', 'true'); }, 1000); }
-    gsap.to(rocket.scale, { duration: 1.0, x: finalScale, y: finalScale, z: finalScale, ease: 'back.out(1.7)', onComplete: () => isRocketAnimating = false });
-    const hitboxMesh = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.1, 0.2), new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true }));
-    hitboxMesh.visible = false;
-    rocket.add(hitboxMesh);
-    rocket.userData.hitboxMesh = hitboxMesh;
-    rocketControlsEnabled = true;
-    rocketIcon.src = 'assets/icons/rocket-hollow.svg';
-    rocketIcon.style.transform = 'scale(1.3)';
-    setTimeout(() => rocketIcon.style.transform = 'scale(1)', 250);
-    const flameTexture = textureLoader.load('assets/flame.png');
-    const particleCount = 100, particleGeometry = new THREE.BufferGeometry(), positions = new Float32Array(particleCount * 3), lifetimes = new Float32Array(particleCount);
-    for (let i = 0; i < particleCount; i++) { positions[i * 3] = 0; positions[i * 3 + 1] = 0; positions[i * 3 + 2] = 0; lifetimes[i] = Math.random(); }
-    particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const particleMaterial = new THREE.PointsMaterial({ size: 1.6, map: flameTexture, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, color: 0xff6600 });
-    const flameParticles = new THREE.Points(particleGeometry, particleMaterial);
-    flameParticles.frustumCulled = false;
-    rocket.add(flameParticles);
-    rocket.userData.flameParticles = { geometry: particleGeometry, material: particleMaterial, positions, lifetimes };
-  });
+    isRocketAnimating = true;
+    gltfLoader.load('assets/rocket.glb', (gltf) => {
+        rocket = gltf.scene;
+        const finalScale = 15;
+        rocket.position.set(50, 0, 0);
+        rocket.rotation.y = Math.PI / 2;
+        scene.add(rocket);
+        if (!localStorage.getItem('rocketTutorialShown')) { setTimeout(() => { rocketTutorialPanel.classList.remove('hidden'); localStorage.setItem('rocketTutorialShown', 'true'); }, 1000); }
+        gsap.to(rocket.scale, { duration: 1.0, x: finalScale, y: finalScale, z: finalScale, ease: 'back.out(1.7)', onComplete: () => isRocketAnimating = false });
+        const hitboxMesh = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.1, 0.2), new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true }));
+        hitboxMesh.visible = false;
+        rocket.add(hitboxMesh);
+        rocket.userData.hitboxMesh = hitboxMesh;
+        rocketControlsEnabled = true;
+        rocketIcon.src = 'assets/icons/rocket-hollow.svg';
+        rocketIcon.style.transform = 'scale(1.3)';
+        setTimeout(() => rocketIcon.style.transform = 'scale(1)', 250);
+        const flameTexture = textureLoader.load('assets/flame.png');
+        const particleCount = 100, particleGeometry = new THREE.BufferGeometry(), positions = new Float32Array(particleCount * 3), lifetimes = new Float32Array(particleCount);
+        for (let i = 0; i < particleCount; i++) { positions[i * 3] = 0; positions[i * 3 + 1] = 0; positions[i * 3 + 2] = 0; lifetimes[i] = Math.random(); }
+        particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        const particleMaterial = new THREE.PointsMaterial({ size: 1.6, map: flameTexture, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, color: 0xff6600 });
+        const flameParticles = new THREE.Points(particleGeometry, particleMaterial);
+        flameParticles.frustumCulled = false;
+        rocket.add(flameParticles);
+        rocket.userData.flameParticles = { geometry: particleGeometry, material: particleMaterial, positions, lifetimes };
+    });
 }
 
 function triggerRocketExplosion(position) {
