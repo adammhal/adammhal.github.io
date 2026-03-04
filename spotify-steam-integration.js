@@ -1,4 +1,4 @@
-const currentlyPlayingGameID = '2592160'; 
+const currentlyPlayingGameID = '1903340'; 
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchAllData();
@@ -6,48 +6,27 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function fetchAllData() {
-    const backendUrl = 'https://spotify-api-production-4a82.up.railway.app'; 
-    const loadingEl = document.getElementById('spotify-loading');
-    const contentEl = document.getElementById('spotify-content');
-    
+    const backendUrl = 'https://spotify-api-production-4a82.up.railway.app';
+
     try {
-        const promises = [
-            fetch(`${backendUrl}/api/now-playing`),
-            fetch(`${backendUrl}/api/top-tracks`),
-            fetch(`${backendUrl}/api/top-artists`)
-        ];
+        if (!currentlyPlayingGameID) return;
 
-        if (currentlyPlayingGameID) {
-            promises.push(fetch(`${backendUrl}/api/steam-game?appid=${currentlyPlayingGameID}`));
-        }
+        const res = await fetch(`${backendUrl}/api/steam-game?appid=${currentlyPlayingGameID}`);
+        if (!res.ok) throw new Error(`Failed to fetch Steam data: ${res.statusText}`);
 
-        const responses = await Promise.all(promises);
-
-        for (const res of responses) {
-            if (!res.ok) {
-                throw new Error(`Failed to fetch data: ${res.statusText}`);
-            }
-        }
-
-        const [nowPlayingData, topTracksData, topArtistsData, steamGameData] = await Promise.all(responses.map(res => res.json()));
-
-        renderNowPlaying(nowPlayingData);
-        renderTopTracks(topTracksData.tracks);
-        renderTopArtists(topArtistsData.artists);
+        const steamGameData = await res.json();
         if (steamGameData) {
             renderSteamWidget(steamGameData);
         }
-        
-        loadingEl.style.display = 'none';
-        contentEl.classList.remove('hidden');
-
     } catch (error) {
-        console.error('Error fetching external data:', error);
-        loadingEl.innerHTML = '<p>Could not load external data at the moment.</p>';
+        console.error('Error fetching Steam data:', error);
+        const container = document.getElementById('steam-widget-container');
+        if (container) container.innerHTML = '<p>Could not load Steam data at the moment.</p>';
     }
 }
 
 function renderNowPlaying(data) {
+    /* 
     const container = document.getElementById('spotify-now-playing');
     if (!data.hasData) {
         container.innerHTML = ''; 
@@ -68,9 +47,11 @@ function renderNowPlaying(data) {
             </div>
         </div>
     `;
+    */
 }
 
 function renderTopTracks(tracks) {
+    /*
     const container = document.getElementById('spotify-top-tracks');
     if (!tracks || tracks.length === 0) return;
 
@@ -83,9 +64,11 @@ function renderTopTracks(tracks) {
             </div>
         </a>
     `).join('');
+    */
 }
 
 function renderTopArtists(artists) {
+    /* 
     const container = document.getElementById('spotify-top-artists');
     if (!artists || artists.length === 0) return;
 
@@ -97,6 +80,7 @@ function renderTopArtists(artists) {
             </div>
         </a>
     `).join('');
+    */
 }
 
 function renderSteamWidget(data) {
