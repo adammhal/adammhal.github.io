@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <filter id="h-glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="h-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <polygon points="0 1, 7 4, 0 7" fill="#9c6bff"/>
+    </marker>
+    <marker id="h-arrow-sm" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <polygon points="0 0.5, 6 3, 0 5.5" fill="#6a3fc8"/>
+    </marker>
+  </defs>
+
+  <rect width="600" height="400" fill="#0b0c1a"/>
+
+  <!-- Subtle diagonal lines -->
+  <g stroke="#0f0f1e" stroke-width="1">
+    <line x1="0" y1="50" x2="600" y2="450"/>
+    <line x1="0" y1="0" x2="600" y2="400"/>
+    <line x1="0" y1="100" x2="600" y2="500"/>
+    <line x1="0" y1="150" x2="600" y2="550"/>
+    <line x1="0" y1="200" x2="600" y2="600"/>
+    <line x1="50" y1="0" x2="650" y2="400"/>
+    <line x1="100" y1="0" x2="700" y2="400"/>
+    <line x1="150" y1="0" x2="750" y2="400"/>
+    <line x1="200" y1="0" x2="800" y2="400"/>
+    <line x1="250" y1="0" x2="850" y2="400"/>
+    <line x1="300" y1="0" x2="900" y2="400"/>
+  </g>
+
+  <!-- Real-Debrid block (left) -->
+  <rect x="28" y="108" width="142" height="184" rx="6" fill="#100d1a" stroke="#3d2870" stroke-width="1.5"/>
+
+  <!-- Cloud shape (geometric) -->
+  <rect x="50" y="130" width="98" height="50" rx="25" fill="none" stroke="#9c6bff" stroke-width="1.5"/>
+  <rect x="62" y="148" width="74" height="32" rx="4" fill="#100d1a"/>
+  <line x1="98" y1="138" x2="98" y2="172" stroke="#9c6bff" stroke-width="1.5"/>
+  <polyline points="90,164 98,174 106,164" fill="none" stroke="#9c6bff" stroke-width="1.5"/>
+
+  <text x="99" y="200" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#c8a8ff" font-weight="bold">Real-Debrid</text>
+  <text x="99" y="218" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#6a5080">Content Library</text>
+
+  <rect x="46" y="232" width="106" height="11" rx="2" fill="#1e1530" stroke="#3d2870" stroke-width="1"/>
+  <rect x="46" y="248" width="86" height="11" rx="2" fill="#1e1530" stroke="#3d2870" stroke-width="1"/>
+  <rect x="46" y="264" width="96" height="11" rx="2" fill="#1e1530" stroke="#3d2870" stroke-width="1"/>
+  <text x="52" y="241" font-family="system-ui,sans-serif" font-size="8" fill="#7a5a9a">Movie.mkv</text>
+  <text x="52" y="257" font-family="system-ui,sans-serif" font-size="8" fill="#7a5a9a">Show.S01E03</text>
+  <text x="52" y="273" font-family="system-ui,sans-serif" font-size="8" fill="#7a5a9a">Documentary.mp4</text>
+
+  <!-- Arrow: Real-Debrid to Hermes -->
+  <line x1="172" y1="200" x2="214" y2="200" stroke="#9c6bff" stroke-width="2" marker-end="url(#h-arrow)"/>
+  <text x="193" y="192" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#6a4898">Browse</text>
+  <text x="193" y="215" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#6a4898">and Fetch</text>
+
+  <!-- Hermes app block (center) -->
+  <rect x="220" y="80" width="160" height="240" rx="14" fill="#0e0c18" stroke="#7c4dff" stroke-width="2" filter="url(#h-glow)"/>
+  <rect x="270" y="88" width="60" height="10" rx="5" fill="#1a1528"/>
+  <rect x="234" y="106" width="132" height="168" rx="4" fill="#080810"/>
+
+  <!-- App name area -->
+  <rect x="246" y="130" width="108" height="44" rx="6" fill="#12102a" stroke="#5533bb" stroke-width="1"/>
+  <text x="300" y="152" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" fill="#c8a8ff" font-weight="bold">HERMES</text>
+  <text x="300" y="168" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#5a4878">Media Manager</text>
+
+  <!-- Mini UI rows -->
+  <rect x="242" y="184" width="116" height="18" rx="3" fill="#1a1530" stroke="#3d2860" stroke-width="1"/>
+  <text x="252" y="196" font-family="system-ui,sans-serif" font-size="8" fill="#9070c0">Now Watching: Severance</text>
+  <rect x="242" y="207" width="116" height="18" rx="3" fill="#1a1530" stroke="#3d2860" stroke-width="1"/>
+  <text x="252" y="219" font-family="system-ui,sans-serif" font-size="8" fill="#7a5a9a">Downloading... 74%</text>
+  <rect x="242" y="230" width="116" height="18" rx="3" fill="#1a1530" stroke="#3d2860" stroke-width="1"/>
+  <text x="252" y="242" font-family="system-ui,sans-serif" font-size="8" fill="#6a4888">Trakt synced</text>
+
+  <rect x="275" y="304" width="50" height="4" rx="2" fill="#3d2870"/>
+  <text x="300" y="338" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#7c4dff">Quest 3 + Android</text>
+
+  <!-- Arrow: Hermes to Download -->
+  <line x1="382" y1="162" x2="424" y2="162" stroke="#9c6bff" stroke-width="2" marker-end="url(#h-arrow)"/>
+  <text x="403" y="154" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#6a4898">Download</text>
+
+  <!-- Arrow: Hermes to Trakt -->
+  <line x1="382" y1="238" x2="424" y2="238" stroke="#6a3fc8" stroke-width="2" marker-end="url(#h-arrow-sm)"/>
+  <text x="403" y="254" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#5a3898">Sync on Watch</text>
+
+  <!-- Local Storage block -->
+  <rect x="430" y="116" width="140" height="82" rx="6" fill="#100d1a" stroke="#3d2870" stroke-width="1.5"/>
+  <!-- Folder icon -->
+  <rect x="452" y="134" width="44" height="34" rx="3" fill="none" stroke="#9c6bff" stroke-width="1.5"/>
+  <rect x="452" y="130" width="22" height="8" rx="2 2 0 0" fill="none" stroke="#9c6bff" stroke-width="1.5"/>
+  <text x="508" y="151" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#c8a8ff" font-weight="bold">Storage</text>
+  <text x="508" y="167" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#6a5080">Local Downloads</text>
+  <text x="508" y="188" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#4a3868">Opens in ext. player</text>
+
+  <!-- Trakt block -->
+  <rect x="430" y="200" width="140" height="82" rx="6" fill="#100d1a" stroke="#3d2870" stroke-width="1.5"/>
+  <!-- Clapper icon -->
+  <rect x="452" y="218" width="44" height="30" rx="3" fill="none" stroke="#9c6bff" stroke-width="1.5"/>
+  <rect x="452" y="218" width="44" height="9" rx="3 3 0 0" fill="#1a1030"/>
+  <line x1="460" y1="218" x2="456" y2="210" stroke="#9c6bff" stroke-width="1.5"/>
+  <line x1="469" y1="218" x2="465" y2="210" stroke="#9c6bff" stroke-width="1.5"/>
+  <line x1="478" y1="218" x2="474" y2="210" stroke="#9c6bff" stroke-width="1.5"/>
+  <line x1="487" y1="218" x2="483" y2="210" stroke="#9c6bff" stroke-width="1.5"/>
+  <text x="508" y="237" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#c8a8ff" font-weight="bold">Trakt</text>
+  <text x="508" y="253" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#6a5080">Watch Sync</text>
+  <text x="508" y="270" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#4a3868">Auto-scrobble</text>
+
+  <!-- Title -->
+  <text x="20" y="34" font-family="system-ui,sans-serif" font-size="15" fill="#e0e0e0" font-weight="bold">Hermes</text>
+  <text x="20" y="50" font-family="system-ui,sans-serif" font-size="9" fill="#4a3870">Android Media Manager / Real-Debrid · Trakt · Quest 3</text>
+
+  <text x="300" y="385" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#2e2445">All traffic proxied through single endpoint / frontend never calls backend directly</text>
+</svg>

@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <filter id="sg-glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="sg-arrow" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <polygon points="0 0.5, 7 3.5, 0 6.5" fill="#00b4d8"/>
+    </marker>
+    <marker id="sg-arrow-in" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <polygon points="0 0.5, 7 3.5, 0 6.5" fill="#005f75"/>
+    </marker>
+    <marker id="sg-arrow-pwr" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <polygon points="0 0.5, 7 3.5, 0 6.5" fill="#007a9a"/>
+    </marker>
+  </defs>
+
+  <rect width="600" height="400" fill="#0b0c1a"/>
+
+  <!-- Circuit trace background -->
+  <g stroke="#0c1e28" stroke-width="1" fill="none">
+    <polyline points="0,80 580,80"/>
+    <polyline points="0,320 580,320"/>
+    <polyline points="0,200 40,200 40,110 580,110"/>
+    <polyline points="0,240 30,240 30,290 580,290"/>
+    <polyline points="100,0 100,380"/>
+    <polyline points="200,0 200,380"/>
+    <polyline points="350,0 350,380"/>
+    <polyline points="500,0 500,380"/>
+    <circle cx="100" cy="80" r="2.5" fill="#0c1e28"/>
+    <circle cx="200" cy="80" r="2.5" fill="#0c1e28"/>
+    <circle cx="350" cy="80" r="2.5" fill="#0c1e28"/>
+    <circle cx="100" cy="320" r="2.5" fill="#0c1e28"/>
+    <circle cx="200" cy="320" r="2.5" fill="#0c1e28"/>
+    <circle cx="350" cy="320" r="2.5" fill="#0c1e28"/>
+  </g>
+
+  <!-- Input labels (left side) -->
+  <g font-family="system-ui,sans-serif" font-size="9" fill="#005f75">
+    <text x="16" y="148">+ Notifications</text>
+    <text x="16" y="169">+ Media Controls</text>
+    <text x="16" y="190">+ Time and Date</text>
+    <text x="16" y="211">+ Weather</text>
+  </g>
+
+  <!-- Input arrows into Phone -->
+  <g stroke="#005f75" stroke-width="1" marker-end="url(#sg-arrow-in)" opacity="0.7">
+    <line x1="88" y1="145" x2="106" y2="162"/>
+    <line x1="88" y1="166" x2="106" y2="171"/>
+    <line x1="88" y1="187" x2="106" y2="179"/>
+    <line x1="88" y1="207" x2="106" y2="187"/>
+  </g>
+
+  <!-- SMARTPHONE block -->
+  <rect x="108" y="130" width="82" height="140" rx="10" fill="#091418" stroke="#00b4d8" stroke-width="2" filter="url(#sg-glow)"/>
+  <rect x="116" y="144" width="66" height="104" rx="3" fill="#040e12"/>
+  <rect x="135" y="136" width="28" height="6" rx="3" fill="#0d2530"/>
+  <text x="149" y="172" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#00b4d8">New Message</text>
+  <rect x="120" y="178" width="58" height="8" rx="2" fill="#0d2530"/>
+  <rect x="120" y="191" width="44" height="8" rx="2" fill="#0d2530"/>
+  <rect x="120" y="204" width="50" height="8" rx="2" fill="#0d2530"/>
+  <rect x="120" y="217" width="36" height="8" rx="2" fill="#0d2530"/>
+  <circle cx="149" cy="252" r="7" fill="none" stroke="#0d2530" stroke-width="1.5"/>
+  <text x="149" y="278" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#00b4d8" font-weight="bold">Phone</text>
+
+  <!-- Bluetooth connection block -->
+  <rect x="220" y="174" width="70" height="52" rx="5" fill="#091418" stroke="#005f75" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <!-- BT symbol drawn geometrically -->
+  <polyline points="247,188 255,194 247,200" fill="none" stroke="#007a9a" stroke-width="1.5"/>
+  <polyline points="247,188 255,182 263,188 255,194 263,200 255,206 247,200" fill="none" stroke="#007a9a" stroke-width="1.5"/>
+  <!-- Radio arcs -->
+  <g stroke="#004f65" stroke-width="1" fill="none" opacity="0.7">
+    <path d="M270,188 Q276,200 270,212"/>
+    <path d="M274,184 Q282,200 274,216"/>
+  </g>
+  <text x="255" y="218" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#005f75">Bluetooth LE</text>
+
+  <!-- Arrow Phone to BLE -->
+  <line x1="192" y1="200" x2="218" y2="200" stroke="#00b4d8" stroke-width="2" marker-end="url(#sg-arrow)"/>
+  <!-- Arrow BLE to Arduino -->
+  <line x1="292" y1="200" x2="318" y2="200" stroke="#00b4d8" stroke-width="2" marker-end="url(#sg-arrow)"/>
+
+  <!-- ARDUINO NANO block -->
+  <rect x="320" y="148" width="108" height="104" rx="6" fill="#091418" stroke="#00b4d8" stroke-width="2" filter="url(#sg-glow)"/>
+  <rect x="330" y="158" width="88" height="74" rx="3" fill="#060f12" stroke="#0d2535" stroke-width="1"/>
+  <!-- Pin headers left -->
+  <g fill="#1a3040">
+    <rect x="322" y="162" width="7" height="5" rx="1"/>
+    <rect x="322" y="171" width="7" height="5" rx="1"/>
+    <rect x="322" y="180" width="7" height="5" rx="1"/>
+    <rect x="322" y="189" width="7" height="5" rx="1"/>
+    <rect x="322" y="198" width="7" height="5" rx="1"/>
+    <rect x="322" y="207" width="7" height="5" rx="1"/>
+    <rect x="322" y="216" width="7" height="5" rx="1"/>
+  </g>
+  <!-- Pin headers right -->
+  <g fill="#1a3040">
+    <rect x="419" y="162" width="7" height="5" rx="1"/>
+    <rect x="419" y="171" width="7" height="5" rx="1"/>
+    <rect x="419" y="180" width="7" height="5" rx="1"/>
+    <rect x="419" y="189" width="7" height="5" rx="1"/>
+    <rect x="419" y="198" width="7" height="5" rx="1"/>
+    <rect x="419" y="207" width="7" height="5" rx="1"/>
+    <rect x="419" y="216" width="7" height="5" rx="1"/>
+  </g>
+  <rect x="345" y="170" width="58" height="40" rx="3" fill="#0a1e26" stroke="#1e4055" stroke-width="1"/>
+  <text x="374" y="194" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#008aaa">ESP32</text>
+  <rect x="358" y="210" width="32" height="10" rx="2" fill="#0d2535" stroke="#1e4055" stroke-width="1"/>
+  <text x="374" y="219" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7" fill="#3a6070">USB-C</text>
+  <text x="374" y="266" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#00b4d8" font-weight="bold">Arduino Nano</text>
+
+  <!-- Battery to Arduino arrow -->
+  <line x1="374" y1="310" x2="374" y2="254" stroke="#00b4d8" stroke-width="1.5" marker-end="url(#sg-arrow-pwr)" stroke-dasharray="3 2"/>
+
+  <!-- Battery block -->
+  <rect x="330" y="312" width="88" height="38" rx="5" fill="#091418" stroke="#005f75" stroke-width="1.5"/>
+  <rect x="326" y="322" width="6" height="18" rx="2" fill="#005f75"/>
+  <text x="374" y="329" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#007a9a" font-weight="bold">9V Battery</text>
+  <text x="374" y="343" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#004f65">Power Supply</text>
+
+  <!-- Arrow Arduino to OLED -->
+  <line x1="430" y1="200" x2="456" y2="200" stroke="#00b4d8" stroke-width="2" marker-end="url(#sg-arrow)"/>
+  <text x="443" y="192" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7" fill="#005f75">I2C</text>
+
+  <!-- OLED Display block -->
+  <rect x="458" y="148" width="110" height="104" rx="6" fill="#091418" stroke="#00b4d8" stroke-width="2" filter="url(#sg-glow)"/>
+  <rect x="467" y="156" width="92" height="70" rx="4" fill="#020810" stroke="#0d2535" stroke-width="1"/>
+  <text x="513" y="181" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#00b4d8">11:42 AM</text>
+  <text x="513" y="197" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7" fill="#007a9a">New: Slack message</text>
+  <text x="513" y="211" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7" fill="#005f75">Now Playing</text>
+  <rect x="467" y="156" width="92" height="70" rx="4" fill="none" stroke="#00b4d8" stroke-width="0.5" opacity="0.4"/>
+  <text x="513" y="267" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#00b4d8" font-weight="bold">OLED Display</text>
+
+  <!-- Title -->
+  <text x="20" y="34" font-family="system-ui,sans-serif" font-size="15" fill="#e0e0e0" font-weight="bold">Smart Glasses</text>
+  <text x="20" y="50" font-family="system-ui,sans-serif" font-size="9" fill="#004f65">Embedded Hardware / Arduino / Bluetooth LE / OLED</text>
+
+  <text x="300" y="385" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#1a3040">Battery-powered · No internet required · Companion app syncs via BLE</text>
+</svg>

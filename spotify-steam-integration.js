@@ -1,23 +1,58 @@
-const currentlyPlayingGameID = '1903340'; 
+const currentlyPlayingGameID = '1888930'; 
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchAllData();
-    setInterval(fetchAllData, 60000); 
+    setInterval(fetchAllData, 60000);
 });
+
+async function fetchWithRetry(url, retries = 5, delay = 3000) {
+    for (let i = 0; i < retries; i++) {
+        try {
+            const res = await fetch(url);
+            if (res.ok) return res;
+        } catch (_) {}
+        if (i < retries - 1) await new Promise(r => setTimeout(r, delay));
+    }
+    return null;
+}
 
 async function fetchAllData() {
     const backendUrl = 'https://spotify-api-production-4a82.up.railway.app';
 
     try {
+        const [nowPlayingRes, topTracksRes, topArtistsRes] = await Promise.all([
+            fetchWithRetry(`${backendUrl}/api/now-playing`),
+            fetchWithRetry(`${backendUrl}/api/top-tracks`),
+            fetchWithRetry(`${backendUrl}/api/top-artists`),
+        ]);
+
+        if (!nowPlayingRes || !topTracksRes || !topArtistsRes) throw new Error('Server unavailable');
+
+        const [nowPlaying, topTracks, topArtists] = await Promise.all([
+            nowPlayingRes.json(),
+            topTracksRes.json(),
+            topArtistsRes.json(),
+        ]);
+
+        renderNowPlaying(nowPlaying);
+        renderTopTracks(topTracks.tracks);
+        renderTopArtists(topArtists.artists);
+
+        document.getElementById('spotify-loading').style.display = 'none';
+        document.getElementById('spotify-content').classList.remove('hidden');
+    } catch (error) {
+        console.error('Error fetching Spotify data:', error);
+        document.getElementById('spotify-loading').innerHTML = '<p>Could not load Spotify data.</p>';
+    }
+
+    try {
         if (!currentlyPlayingGameID) return;
 
-        const res = await fetch(`${backendUrl}/api/steam-game?appid=${currentlyPlayingGameID}`);
-        if (!res.ok) throw new Error(`Failed to fetch Steam data: ${res.statusText}`);
+        const res = await fetchWithRetry(`${backendUrl}/api/steam-game?appid=${currentlyPlayingGameID}`);
+        if (!res) throw new Error('Server unavailable after retries');
 
         const steamGameData = await res.json();
-        if (steamGameData) {
-            renderSteamWidget(steamGameData);
-        }
+        if (steamGameData) renderSteamWidget(steamGameData);
     } catch (error) {
         console.error('Error fetching Steam data:', error);
         const container = document.getElementById('steam-widget-container');
@@ -26,7 +61,6 @@ async function fetchAllData() {
 }
 
 function renderNowPlaying(data) {
-    /* 
     const container = document.getElementById('spotify-now-playing');
     if (!data.hasData) {
         container.innerHTML = ''; 
@@ -47,11 +81,9 @@ function renderNowPlaying(data) {
             </div>
         </div>
     `;
-    */
 }
 
 function renderTopTracks(tracks) {
-    /*
     const container = document.getElementById('spotify-top-tracks');
     if (!tracks || tracks.length === 0) return;
 
@@ -64,11 +96,9 @@ function renderTopTracks(tracks) {
             </div>
         </a>
     `).join('');
-    */
 }
 
 function renderTopArtists(artists) {
-    /* 
     const container = document.getElementById('spotify-top-artists');
     if (!artists || artists.length === 0) return;
 
@@ -80,7 +110,6 @@ function renderTopArtists(artists) {
             </div>
         </a>
     `).join('');
-    */
 }
 
 function renderSteamWidget(data) {
@@ -102,4 +131,5 @@ function renderSteamWidget(data) {
             </a>
         </div>
     `;
+    container.classList.add('visible');
 }

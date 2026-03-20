@@ -38,9 +38,9 @@
                         </div>
                     </a>
                     <div class="project-text-content">
-                        <h3>Interactive 3D Portfolio</h3>
-                        <p>A personal portfolio website designed as an interactive 3D solar system. Built from scratch using Three.js, the site features custom GLSL shaders for the sun, post-processing effects like bloom, and GSAP-powered camera animations. The project includes GLTF model loading for planets and a hidden rocket flight simulator Easter egg.</p>
-                        <p><strong>Skills:</strong> Three.js, WebGL, GLSL, JavaScript, GSAP, HTML5, CSS3, 3D Modeling.</p>
+                        <h3>Solarium</h3>
+                        <p>A personal portfolio built as a fully interactive 3D solar system, the site you're on right now. Engineered from scratch using Three.js and WebGL, featuring custom GLSL shaders for the sun's surface, HDR bloom post-processing, and GSAP-driven camera fly-in animations. Each planet is a navigable section with live Spotify and Steam data pulled from a custom FastAPI backend. Includes a rocket flight easter egg</p>
+                        <p><strong>Skills:</strong> Three.js, WebGL, GLSL, JavaScript, GSAP, FastAPI, HTML5, CSS3.</p>
                     </div>
                 </div>
 
@@ -71,15 +71,15 @@
                </div>
 
                 <div class="project-item">
-                    <a href="https://github.com/adammhal/ai-agent" target="_blank" class="project-image-link">
+                    <a href="https://github.com/adammhal/hermes" target="_blank" class="project-image-link">
                         <div class="project-image-container">
-                            <img src="https://placehold.co/600x400/2a2a2a/ffffff?text=In+Progress!" alt="Personalized AI Agent Project In Progress">
+                            <img src="assets/images/hermes-diagram.svg" alt="Hermes Project Image">
                         </div>
                     </a>
                     <div class="project-text-content">
-                        <h3>KAIROS</h3>
-                        <p>Fine-tuned open-source LLMs on a custom dataset of personal conversations and code to create a personalized AI assistant. The model replicates my unique communication style and intelligently adapts its tone for different audiences. The system uses a model cascade architecture, employing a fast model (Qwen2.5 VL 7B) for quick interactions and a larger model (Gemma 3 27B) for complex reasoning.</p>
-                        <p><strong>Skills:</strong> Supervised Fine-Tuning, QLoRA, LLMs, Agentic Systems, Model Cascading, NLP, Python, Hugging Face, Axolotl, Google Colab, JSONL.</p>
+                        <h3>Hermes</h3>
+                        <p>An Android companion app to Dionysus, designed for the Meta Quest 3 and general Android devices. Interfaces with a Real-Debrid library to browse and locally download content with full metadata, and syncs watch history with Trakt automatically. Built as a flat app that hands off playback to external video players.</p>
+                        <p><strong>Skills:</strong> Kotlin, Android SDK, RESTful APIs, Real-Debrid API, Trakt API, Jetpack Compose.</p>
                     </div>
                 </div>
 
@@ -112,12 +112,12 @@
                 <div class="project-item">
                     <a href="https://github.com/adammhal/route-scout" target="_blank" class="project-image-link">
                         <div class="project-image-container">
-                            <img src="https://placehold.co/600x400/2a2a2a/ffffff?text=Private+Project" alt="Route Scout Project Image">
+                            <img src="assets/images/route-scout-diagram.svg" alt="Route Scout Project Image">
                         </div>
                     </a>
                     <div class="project-text-content">
                         <h3>Route Scout</h3>
-                        <p>Developed a full-stack network visualization tool to automate packet tracing across Verizon’s core network, reducing diagnostic time for 50k+ engineers from hours to seconds. Engineered a Python/Flask backend and a dynamic JavaScript frontend to render interactive, bi-directional path visualizations.</p>
+                        <p>Essentially the Google Maps of networking, a full-stack network visualization tool built at Verizon that automates packet tracing across the core network, reducing diagnostic time for 50k+ engineers from hours to seconds. Engineered a Python/Flask backend and a dynamic JavaScript frontend to render interactive, bi-directional path visualizations with live fault detection.</p>
                         <p><strong>Skills:</strong> Python, Flask, JavaScript, HTML/CSS, SQL, Jinja2, RESTful APIs.</p>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
                 <div class="project-item">
                     <a href="https://github.com/adammhal/smart-glasses" target="_blank" class="project-image-link">
                         <div class="project-image-container">
-                            <img src="https://placehold.co/600x400/2a2a2a/ffffff?text=In+Progress!" alt="Smart Glasses Project Image">
+                            <img src="assets/images/smart-glasses-diagram.svg" alt="Smart Glasses Project Image">
                         </a>
                     </div>
                     <div class="project-text-content">
@@ -184,6 +184,23 @@
                         <h3>Electromagnetic Sorting Rover</h3>
                         <p>As part of a 4-person team, designed and built an autonomous rover for the BU HackHardware and Rastic collaboration, securing 3rd place. The robot, built on an ESP32 platform with Mecanum wheels, uses an electromagnetic arm to pick up metal coins and sort them into colored bins. The system was programmed in C++ using the Arduino framework and controlled via Bluetooth.</p>
                         <p><strong>Skills:</strong> C++, Arduino, ESP32, Robotics, Electromagnetism, Motor Control, Bluetooth, Team Collaboration</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <a href="https://github.com/adammhal/EK210-P2P-Project" target="_blank" class="project-image-link">
+                        <div class="project-image-container">
+                            <img src="assets/images/pointTopoint.png" alt="Bedside Beacon Project Image">
+                        </div>
+                    </a>
+                    <div class="project-text-content">
+                        <h3>Bedside Beacon</h3>
+                        <p>As part of a 4-person team, designed and built a laser-based point-to-point communication device for hospital patients with limited speech or mobility. Solely responsible for all firmware, implementing a T9-style multi-tap encoding scheme on an ESP32 that converts keypad input to ASCII and transmits it over a 650nm laser to a photodiode receiver. Optimized bit transmission timing to cut LCD display lag from 3,576ms to 615ms, and the system achieved reliable transmission across 4–8 meters with an 83% success rate at up to 15 feet. Both units run fully standalone on 9V batteries with no computer connection required.</p>
+                        <p><strong>Skills:</strong> C++, Arduino, ESP32, Embedded Systems, Signal Encoding, Circuit Design, Hardware Prototyping</p>
+                        <video controls muted onvolumechange="this.muted=true" class="project-video">
+                            <source src="assets/videos/pointTopoint.mp4" type="video/mp4">
+                        </video>
+                        <a href="assets/docs/bedside-beacon-report.pdf" target="_blank" class="back-button" style="display: inline-block; margin-top: 16px;">Download Engineering Report</a>
                     </div>
                 </div>
             </div>
